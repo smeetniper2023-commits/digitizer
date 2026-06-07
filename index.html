@@ -221,6 +221,93 @@ tbody tr.sel{background:var(--accent-dim)}
   .mode-btn span.t{display:none}
 }
 .svgi{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+/* ===== TUTORIAL / GUIDE MODAL ===== */
+#tg-modal{position:fixed;inset:0;z-index:200;background:#0a0816e8;backdrop-filter:blur(6px);
+  display:none;align-items:flex-start;justify-content:center;padding:24px 16px;overflow:hidden}
+#tg-modal.open{display:flex}
+.tg-shell{width:100%;max-width:1000px;max-height:calc(100vh - 48px);display:flex;flex-direction:column;
+  background:linear-gradient(160deg,#16132c,#0e0c1d);border:1px solid var(--line2);border-radius:16px;overflow:hidden;box-shadow:0 30px 90px #000a}
+.tg-head{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line2);flex:0 0 auto}
+.tg-head .tg-logo{height:30px}
+.tg-title{font-weight:800;font-size:15px;letter-spacing:-.02em}
+.tg-title small{display:block;font-weight:400;font-size:10.5px;color:var(--txt3);font-family:var(--mono);letter-spacing:.04em}
+.tg-x{margin-left:auto;width:34px;height:34px;border-radius:8px;background:var(--panel2);border:1px solid var(--line);
+  color:var(--txt2);font-size:20px;cursor:pointer;line-height:1}
+.tg-x:hover{border-color:var(--danger);color:var(--danger)}
+.tg-scroll{overflow-y:auto;padding:18px}
+.tg-player{max-width:880px;margin:0 auto}
+.tg-stage{position:relative;width:100%;aspect-ratio:16/9;background:linear-gradient(160deg,#16132c,#0e0c1d);
+  border:1px solid var(--line2);border-radius:14px;overflow:hidden}
+.tg-scene{position:absolute;inset:0}
+.tg-scene svg{width:100%;height:100%;display:block}
+.tg-watermark{position:absolute;top:12px;right:14px;opacity:.45;z-index:4}
+.tg-watermark img{height:16px}
+.tg-chapnum{position:absolute;top:12px;left:16px;font-family:var(--mono);font-size:11px;color:var(--accent);z-index:4;
+  background:#0c0b18aa;border:1px solid var(--line2);border-radius:7px;padding:4px 9px}
+.tg-caption{position:absolute;left:0;right:0;bottom:0;padding:42px 26px 22px;z-index:5;
+  background:linear-gradient(to top,#0a0816f2 28%,transparent);font-size:clamp(13px,1.9vw,17px);font-weight:600;line-height:1.5}
+.tg-caption b{color:var(--accent)}
+.tg-caption .ttl{font-size:clamp(15px,2.2vw,20px);font-weight:800;margin-bottom:5px;letter-spacing:-.01em}
+.tg-caption .ttl span{color:var(--accent)}
+.tg-poster{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  background:#0c0b18cc;z-index:20;text-align:center;padding:20px}
+.tg-poster.hide{display:none}
+.tg-poster h1{font-size:clamp(20px,3.4vw,32px);font-weight:800;letter-spacing:-.02em}
+.tg-poster h1 span{color:var(--accent)}
+.tg-poster p{color:var(--txt2);max-width:460px;line-height:1.55;font-size:13px}
+.tg-playbig{width:74px;height:74px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;display:grid;place-items:center;
+  box-shadow:0 0 0 0 #66c4d055;animation:tg-halo 2.4s infinite;transition:.15s}
+.tg-playbig:hover{transform:scale(1.06)}
+.tg-playbig svg{width:30px;height:30px;margin-left:4px;fill:#0c0b18}
+@keyframes tg-halo{0%{box-shadow:0 0 0 0 #66c4d055}70%{box-shadow:0 0 0 20px #66c4d000}100%{box-shadow:0 0 0 0 #66c4d000}}
+.tg-controls{display:flex;align-items:center;gap:10px;margin-top:12px;background:var(--panel);border:1px solid var(--line2);border-radius:12px;padding:9px 13px}
+.tg-ctrl{width:36px;height:36px;border-radius:9px;background:var(--panel2);border:1px solid var(--line);color:var(--txt);cursor:pointer;display:grid;place-items:center;flex:0 0 auto}
+.tg-ctrl:hover{border-color:var(--accent);color:var(--accent)}
+.tg-ctrl.primary{background:var(--accent);color:#0c0b18;border-color:var(--accent)}
+.tg-ctrl svg{width:17px;height:17px;fill:currentColor}
+.tg-progress{flex:1;height:7px;background:#ffffff14;border-radius:4px;overflow:hidden;cursor:pointer}
+.tg-bar{height:100%;width:0;background:linear-gradient(90deg,var(--tealblue),var(--accent));border-radius:4px}
+.tg-bar.run{animation:tg-fill linear forwards}
+@keyframes tg-fill{from{width:0}to{width:100%}}
+.tg-tnum{font-family:var(--mono);font-size:11px;color:var(--txt3);min-width:52px;text-align:center}
+.tg-toggle{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--txt2);cursor:pointer;user-select:none;flex:0 0 auto}
+.tg-toggle input{accent-color:var(--accent)}
+.tg-chapters{margin-top:14px;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:7px}
+.tg-chap{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;background:var(--panel);border:1px solid var(--line);cursor:pointer;text-align:left}
+.tg-chap:hover{border-color:var(--line2)}
+.tg-chap.on{border-color:var(--accent);background:#66c4d014}
+.tg-chap .n{font-family:var(--mono);font-size:10px;width:19px;height:19px;border-radius:6px;background:var(--panel2);display:grid;place-items:center;color:var(--txt3);flex:0 0 auto}
+.tg-chap.on .n{background:var(--accent);color:#0c0b18}
+.tg-chap .lbl{font-size:11px;font-weight:600;line-height:1.2}
+/* written guide */
+.tg-guide{max-width:780px;margin:26px auto 8px}
+.tg-guide h2{font-size:18px;font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
+.tg-lead{color:var(--txt2);line-height:1.6;font-size:13px;margin-bottom:16px}
+.tg-lead b{color:var(--txt)}
+.tg-guide details{background:var(--panel);border:1px solid var(--line);border-radius:10px;margin-bottom:8px;overflow:hidden}
+.tg-guide summary{cursor:pointer;padding:12px 14px;font-size:13.5px;font-weight:600;list-style:none;display:flex;align-items:center;gap:7px}
+.tg-guide summary::-webkit-details-marker{display:none}
+.tg-guide summary::before{content:"▸";color:var(--accent);font-size:11px;transition:.15s}
+.tg-guide details[open] summary::before{transform:rotate(90deg)}
+.tg-guide summary b{color:var(--accent);margin-right:2px}
+.tg-guide ul{padding:0 18px 14px 38px;margin:0}
+.tg-guide li{color:var(--txt2);font-size:12.5px;line-height:1.65;margin-bottom:4px}
+.tg-guide li b{color:var(--txt)}
+.tg-guide code{font-family:var(--mono);font-size:11px;background:var(--panel2);padding:1px 5px;border-radius:4px;color:var(--accent)}
+.tg-tag{font-family:var(--mono);font-size:9px;color:var(--gold,#FFCA30);border:1px solid var(--line2);border-radius:20px;padding:2px 8px;margin-left:6px;font-weight:400}
+.tg-keys{margin-top:14px;font-size:11.5px;color:var(--txt3);line-height:2.1}
+.tg-keys b{color:var(--txt2)}
+.tg-keys span{font-family:var(--mono);font-size:10px;border:1px solid var(--line2);border-radius:4px;padding:2px 6px;color:var(--txt2);margin:0 1px}
+/* scene animation classes (scoped so they can't touch the app) */
+#tg-modal .fu{opacity:0;animation:tg-fu .6s ease both}
+@keyframes tg-fu{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+#tg-modal .pop{opacity:0;animation:tg-pop .45s cubic-bezier(.2,1.4,.5,1) both}
+@keyframes tg-pop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+#tg-modal .draw{stroke-dasharray:1400;stroke-dashoffset:1400;animation:tg-draw 1.6s ease forwards}
+@keyframes tg-draw{to{stroke-dashoffset:0}}
+#tg-modal .pulse{animation:tg-pulse 1.5s ease-in-out infinite}
+@keyframes tg-pulse{0%,100%{opacity:.35}50%{opacity:1}}
+#tg-modal .cur{animation-fill-mode:both;animation-timing-function:cubic-bezier(.5,0,.2,1)}
 </style>
 </head>
 <body>
@@ -259,6 +346,7 @@ tbody tr.sel{background:var(--accent-dim)}
         <button id="newImg">New image<span class="mono"></span></button>
       </div>
     </div>
+    <button class="btn" id="guideBtn" title="How to use Plotline"><svg class="svgi" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Guide</button>
     <button class="btn icon panel-toggle" id="toggleRight" title="Data"><svg class="svgi" viewBox="0 0 24 24"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg></button>
   </div>
 
@@ -418,6 +506,97 @@ tbody tr.sel{background:var(--accent-dim)}
       <span class="modal-note" id="modalNote"></span>
       <button class="btn" id="modalCopy">Copy</button>
       <button class="btn accent" id="modalDl">Download file</button>
+    </div>
+  </div>
+</div>
+<!-- ===== TUTORIAL / GUIDE MODAL ===== -->
+<div id="tg-modal">
+  <div class="tg-shell">
+    <div class="tg-head">
+      <img class="tg-logo" alt="Skyward Analytics">
+      <div class="tg-title">Plotline — Guided Tour<small>watch the walkthrough, or read the steps below</small></div>
+      <button class="tg-x" id="tg-close" title="Close">&times;</button>
+    </div>
+    <div class="tg-scroll">
+      <div class="tg-player">
+        <div class="tg-stage" id="tg-stage">
+          <div class="tg-scene" id="tg-scene"></div>
+          <div class="tg-watermark"><img class="tg-logo" alt=""></div>
+          <div class="tg-chapnum" id="tg-chapnum">01 / 13</div>
+          <div class="tg-caption" id="tg-caption"></div>
+          <div class="tg-poster" id="tg-poster">
+            <img class="tg-logo" alt="Skyward Analytics" style="height:46px">
+            <h1>Plotline <span>Guided Tour</span></h1>
+            <p>A 90-second walkthrough: upload, calibrate, mask, extract, refine, export.</p>
+            <button class="tg-playbig" id="tg-playBig" aria-label="Play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+          </div>
+        </div>
+        <div class="tg-controls">
+          <button class="tg-ctrl" id="tg-restart" title="Restart"><svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg></button>
+          <button class="tg-ctrl" id="tg-prev" title="Previous"><svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button>
+          <button class="tg-ctrl primary" id="tg-play" title="Play / Pause"><svg id="tg-playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+          <button class="tg-ctrl" id="tg-next" title="Next"><svg viewBox="0 0 24 24"><path d="M16 6h2v12h-2zM6 6l8.5 6L6 18z"/></svg></button>
+          <div class="tg-progress" id="tg-progress"><div class="tg-bar" id="tg-bar"></div></div>
+          <div class="tg-tnum" id="tg-tnum">01 / 13</div>
+          <label class="tg-toggle"><input type="checkbox" id="tg-voice" checked> Narration</label>
+        </div>
+        <div class="tg-chapters" id="tg-chaprail"></div>
+      </div>
+
+      <div class="tg-guide">
+        <h2>Step-by-step guide</h2>
+        <p class="tg-lead">Prefer to read? Here's everything the video covers. The workflow is: <b>Upload → Calibrate → (mask &amp; extract, or place points) → Refine → Export.</b></p>
+
+        <details open><summary><b>1.</b> Upload your graph</summary>
+          <ul><li>Drag an image onto the canvas, or click the drop zone to browse.</li>
+          <li>PNG, JPG, BMP, WEBP, GIF and SVG are supported.</li>
+          <li>Mouse wheel zooms (centred on the cursor); <b>Space</b>+drag or the Pan tool moves around; <b>Fit</b> reframes the image.</li></ul></details>
+
+        <details><summary><b>2.</b> Calibrate the axes <span class="tg-tag">required</span></summary>
+          <ul><li>Pick the <b>Calibrate</b> tool. Click two known points on the X axis (<b>X1, X2</b>) and two on the Y axis (<b>Y1, Y2</b>) — gridline intersections are ideal.</li>
+          <li>Type each point's real value into the boxes on the left.</li>
+          <li>Tick <b>Log X</b> / <b>Log Y</b> for logarithmic axes (values must be positive).</li>
+          <li>Press <b>Apply Calibration</b>. Add/Auto unlock and the bottom readout shows live data coordinates. Rotated/skewed scans are handled automatically.</li></ul></details>
+
+        <details><summary><b>3.</b> Set up datasets</summary>
+          <ul><li>Each curve should be its own dataset. Use <b>New dataset</b>, click a name to rename it, click the swatch to change colour.</li>
+          <li>The highlighted dataset is <b>active</b> — new points (manual or auto) go into it.</li></ul></details>
+
+        <details><summary><b>4.</b> Manual extraction — Add / Adjust / Delete</summary>
+          <ul><li><b>Add (A):</b> click to drop points; a magnifier appears for precision.</li>
+          <li><b>Adjust (S):</b> drag a point to reposition; select one and use arrow keys to nudge (Shift = bigger steps).</li>
+          <li><b>Delete (D):</b> click a point to remove it. <b>Ctrl+Z</b> undoes.</li></ul></details>
+
+        <details><summary><b>5.</b> Automatic extraction — mask the curve</summary>
+          <ul><li>Fence in <b>just one curve</b>: <b>Pen</b> paints (brush slider), <b>Box</b> drags a rectangle, <b>Erase</b> trims, <b>View</b> toggles the overlay, <b>Clear mask</b> resets.</li>
+          <li>Masking excludes the other series, gridlines, labels and legend — the biggest factor for clean results.</li></ul></details>
+
+        <details><summary><b>6.</b> Automatic extraction — colour &amp; distance</summary>
+          <ul><li>Click <b>Foreground color</b>, then click the curve to sample its colour.</li>
+          <li><b>Distance</b> is colour-match tolerance — lower it (≈20–30) so faint edge pixels aren't matched.</li>
+          <li><b>Filter colors</b> previews which pixels will be captured; the eye-slash button hides it.</li></ul></details>
+
+        <details><summary><b>7.</b> Automatic extraction — algorithm, ΔX/ΔY &amp; scan</summary>
+          <ul><li><b>Averaging Window</b> traces lines/step curves; <b>X Step</b> gives one point per column.</li>
+          <li><b>ΔX / ΔY</b> set point spacing in pixels (smaller = denser).</li>
+          <li><b>Scan:</b> <b>X →</b> columns (horizontal runs), <b>Y ↓</b> rows (vertical risers), <b>Both</b> for a full step curve.</li>
+          <li>Press <b>Run — Extract Curve</b>; repeat per dataset for multi-series plots.</li></ul></details>
+
+        <details><summary><b>8.</b> Refine for accuracy</summary>
+          <ul><li>Auto gets ~95%. Keep the mask snug, lower Distance, use smaller ΔX/ΔY.</li>
+          <li>Finish with <b>Adjust</b> (nudge), <b>Add</b> (exact corners), <b>Delete</b> (strays).</li>
+          <li>For Kaplan-Meier curves the key points are the step corners — a few by hand often beats automation.</li></ul></details>
+
+        <details><summary><b>9.</b> Validate in Live Preview &amp; download</summary>
+          <ul><li>View your data as <b>Scatter</b>, <b>Line</b>, or <b>Step (KM)</b> in the right panel.</li>
+          <li>Click <b>PNG</b> to download a clean, labelled chart with a legend.</li></ul></details>
+
+        <details><summary><b>10.</b> Export &amp; save the project</summary>
+          <ul><li><b>Export</b> → CSV, TSV, JSON, or copy to clipboard.</li>
+          <li><b>Project → Save</b> stores image, calibration, datasets &amp; settings as <code>.json</code>; reload with <b>Project → Load</b>.</li></ul></details>
+
+        <div class="tg-keys"><b>Shortcuts:</b> <span>V</span> Pan · <span>C</span> Calibrate · <span>A</span> Add · <span>S</span> Adjust · <span>D</span> Delete · <span>B</span> Box · <span>P</span> Pen · <span>X</span> Erase · <span>F</span> Fit · <span>Ctrl+Z</span> Undo · <span>Space</span>+drag Pan</div>
+      </div>
     </div>
   </div>
 </div>
@@ -1100,6 +1279,7 @@ function zoomBy(f){ const r=stage.getBoundingClientRect(),sx=r.width/2,sy=r.heig
 let spaceDown=false;
 window.addEventListener("keydown",e=>{
   if(e.target.tagName==="INPUT") return;
+  if(document.getElementById("tg-modal")&&document.getElementById("tg-modal").classList.contains("open")) return;
   if(e.code==="Space"){ spaceDown=true; stage.classList.add("grab"); e.preventDefault(); }
   if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="z"){ e.preventDefault(); undo(); }
   if(e.key==="Delete"||e.key==="Backspace"){ if(S.selPt){ pushUndo(); S.datasets[S.selPt.ds].pts.splice(S.selPt.i,1); S.selPt=null; refreshAll(); } }
@@ -1280,6 +1460,97 @@ window.addEventListener("resize",()=>{resizeCanvas();renderPlot();});
 renderCalChips(); renderDatasets(); recomputeTable(); resizeCanvas(); setMode("pan"); mobileInit();
 $("#brandLogo").src=LOGO;
 $("#fgSwatch").style.background=`rgb(${S.fg.r},${S.fg.g},${S.fg.b})`;
+
+/* ================= TUTORIAL / GUIDE PLAYER (isolated) ================= */
+(function(){
+  const $=s=>document.querySelector(s);
+  const C={panel:"#1d1b3a",panel2:"#262350",line:"#ffffff22",serpent:"#66C4D0",
+    orange:"#E56C2A",gold:"#FFCA30",green:"#67B169",ube:"#8686B8",txt:"#eef0fb",txt3:"#9b99c4"};
+  const T=(x,y,s,o={})=>`<text x="${x}" y="${y}" fill="${o.fill||C.txt}" font-family="${o.mono?'JetBrains Mono':'Archivo'}" font-size="${o.s||16}" font-weight="${o.w||600}" text-anchor="${o.a||'start'}"${o.cls?` class="${o.cls}"`:''}${o.style?` style="${o.style}"`:''}>${s}</text>`;
+  const P=(x,y,w,h,r=14,fill=C.panel,st=C.line)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${r}" fill="${fill}" stroke="${st}"/>`;
+  const chip=(x,y,w,l,a,d=0)=>`<g class="fu" style="animation-delay:${d}s"><rect x="${x}" y="${y}" width="${w}" height="34" rx="8" fill="${a?C.serpent:C.panel2}" stroke="${a?C.serpent:C.line}"/>${T(x+w/2,y+22,l,{a:'middle',s:13,fill:a?'#0c0b18':C.txt})}</g>`;
+  const cur=c=>`<g class="${c}"><path d="M0 0 L0 22 L6 16 L10 24 L13 23 L9 15 L17 15 Z" fill="#fff" stroke="#0c0b18" stroke-width="1.4"/></g>`;
+  const dot=(x,y,c,d)=>`<circle cx="${x}" cy="${y}" r="5" fill="${c}" class="pop" style="animation-delay:${d}s"/>`;
+  const km=(x,y,w,h)=>`<g><line x1="${x}" y1="${y}" x2="${x}" y2="${y+h}" stroke="${C.line}"/><line x1="${x}" y1="${y+h}" x2="${x+w}" y2="${y+h}" stroke="${C.line}"/><path d="M${x} ${y+20} H${x+w*0.28} V${y+h*0.45} H${x+w*0.55} V${y+h*0.72} H${x+w*0.8} V${y+h*0.9} H${x+w}" fill="none" stroke="${C.orange}" stroke-width="4" class="draw"/></g>`;
+  function appFrame(hi){const HL=(x,y,w,h)=>`<rect x="${x-3}" y="${y-3}" width="${w+6}" height="${h+6}" rx="12" fill="none" stroke="${C.serpent}" stroke-width="2.5" class="pulse"/>`;
+    return `<svg viewBox="0 0 960 540">${P(40,28,880,46,12,"#231f47")}${T(60,57,"Skyward Analytics",{s:14,w:800,fill:C.serpent})}${["Pan","Calibrate","Add","Adjust","Delete"].map((l,i)=>chip(300+i*86,33,80,l,i===1,0.1+i*0.05)).join("")}${T(820,57,"Export",{s:13})}${P(40,92,210,420,12)}${T(60,120,"1 · CALIBRATION",{s:11,fill:C.txt3,mono:true})}${T(60,160,"2 · DATASETS",{s:11,fill:C.txt3,mono:true})}${T(60,200,"3 · AUTO EXTRACTION",{s:11,fill:C.txt3,mono:true})}${T(60,240,"4 · IMAGE ADJUST",{s:11,fill:C.txt3,mono:true})}${P(264,92,420,420,12,"#100e22")}${km(300,140,350,300)}${P(698,92,222,420,12)}${T(716,120,"LIVE PREVIEW",{s:11,fill:C.txt3,mono:true})}${P(716,134,186,120,8,"#100e22")}${T(716,290,"DATA TABLE",{s:11,fill:C.txt3,mono:true})}${[0,1,2,3,4].map(i=>`<rect x="716" y="${300+i*22}" width="186" height="16" rx="4" fill="#ffffff0a"/>`).join("")}${hi==='tool'?HL(40,28,880,46):''}</svg>`;}
+
+  const CH=[
+  {n:"Welcome",dur:6500,say:"Welcome to Plotline by Skyward Analytics — a tool that turns a picture of a graph into real, usable numbers. Let's walk through how it works.",ttl:"Welcome to <span>Plotline</span>",cap:"Turn any graph image into accurate numerical data — by Skyward Analytics.",
+    svg:()=>`<svg viewBox="0 0 960 540">${km(180,140,360,240)}${[0.05,0.28,0.42,0.55,0.7,0.8,0.9].map((t,i)=>dot(180+360*t,140+(t<0.28?20:t<0.55?108:t<0.8?173:216),C.serpent,0.8+i*0.12)).join("")}${T(700,210,"01010",{mono:true,s:30,fill:C.serpent,a:'middle',cls:'fu',style:'animation-delay:1.4s'})}${T(700,248,"11.4, 92.7",{mono:true,s:17,fill:C.txt3,a:'middle',cls:'fu',style:'animation-delay:1.7s'})}${T(700,272,"12.0, 92.5",{mono:true,s:17,fill:C.txt3,a:'middle',cls:'fu',style:'animation-delay:1.9s'})}<path d="M560 230 H660" stroke="${C.serpent}" stroke-width="2" class="fu" style="animation-delay:1.2s"/></svg>`},
+  {n:"Upload",dur:6000,say:"Start by dropping in a graph image, or click to choose one. PNG, JPEG, SVG and more all work.",ttl:"Step 1 — <span>Upload</span> your graph",cap:"Drag &amp; drop an image, or click to browse. PNG · JPG · BMP · WEBP · GIF · SVG.",
+    svg:()=>`<svg viewBox="0 0 960 540"><rect x="280" y="120" width="400" height="290" rx="18" fill="#120f26" stroke="${C.serpent}" stroke-width="2.5" stroke-dasharray="10 8"/><g class="fu" style="animation-delay:.3s"><rect x="430" y="170" width="100" height="100" rx="14" fill="none" stroke="${C.serpent}" stroke-width="2.5"/><path d="M480 250 V190 M455 215 L480 190 L505 215" stroke="${C.serpent}" stroke-width="3" fill="none"/></g>${T(480,310,"Drop a graph image to digitize",{a:'middle',s:18,w:700,cls:'fu',style:'animation-delay:.5s'})}${T(480,340,"or click to choose",{a:'middle',s:13,fill:C.txt3,cls:'fu',style:'animation-delay:.6s'})}<g class="cur" style="animation:tgup 4s 1s both"><g transform="translate(560,360)">${cur('')}</g></g><style>@keyframes tgup{0%{transform:translate(120px,90px)}60%{transform:translate(0,0)}70%{transform:translate(0,0) scale(.9)}100%{transform:translate(0,0)}}</style></svg>`},
+  {n:"Workspace",dur:8000,say:"The workspace has four parts: the toolbar across the top, your tools on the left, the graph in the center, and a live preview with a data table on the right.",ttl:"The <span>workspace</span>",cap:"Toolbar on top · tools on the left · graph in the center · live preview &amp; data table on the right.",svg:()=>appFrame('tool')},
+  {n:"Calibrate",dur:9500,say:"First, calibrate the axes. Pick the Calibrate tool, click two known points on the X axis and two on the Y axis, type their real values, and press Apply. Need a log scale? Just tick Log X or Log Y.",ttl:"Step 2 — <span>Calibrate</span> the axes",cap:"Click <b>X1, X2, Y1, Y2</b> on known gridlines, enter their values, then <b>Apply</b>. Toggle <b>Log X/Y</b> for log scales.",
+    svg:()=>{const x=300,y=120,w=360,h=300;return `<svg viewBox="0 0 960 540">${P(250,80,460,380,14,"#100e22")}<line x1="${x}" y1="${y}" x2="${x}" y2="${y+h}" stroke="${C.line}" stroke-width="2"/><line x1="${x}" y1="${y+h}" x2="${x+w}" y2="${y+h}" stroke="${C.line}" stroke-width="2"/>${[[x,y+h,'Y1·0',C.gold,0.4],[x,y,'Y2·100',C.gold,0.8],[x+w,y+h,'X2·70',C.serpent,1.6]].map(([cx,cy,l,c,d])=>`<g class="pop" style="animation-delay:${d}s"><circle cx="${cx}" cy="${cy}" r="9" fill="none" stroke="${c}" stroke-width="2.5"/><line x1="${cx-13}" y1="${cy}" x2="${cx+13}" y2="${cy}" stroke="${c}" stroke-width="2"/><line x1="${cx}" y1="${cy-13}" x2="${cx}" y2="${cy+13}" stroke="${c}" stroke-width="2"/>${T(cx+15,cy-12,l,{s:12,mono:true,fill:c})}</g>`).join("")}${km(x,y,w,200)}<g class="fu" style="animation-delay:2.1s">${T(250,500,"X1=0  X2=70  Y1=0  Y2=100",{s:14,mono:true,fill:C.txt3})}</g><g class="fu" style="animation-delay:2.4s"><rect x="560" y="478" width="150" height="38" rx="9" fill="${C.serpent}"/>${T(635,503,"Apply Calibration",{a:'middle',s:13,fill:'#0c0b18',w:700})}</g></svg>`;}},
+  {n:"Datasets",dur:6000,say:"Each curve goes in its own dataset. Add as many as you need, rename them, and give each a color — these become your data series.",ttl:"Organize with <span>datasets</span>",cap:"One dataset per curve. Rename them and set colors — these are your output series.",
+    svg:()=>`<svg viewBox="0 0 960 540">${P(300,150,360,240,14)}${T(326,186,"DATASETS",{s:12,mono:true,fill:C.txt3})}<g class="fu" style="animation-delay:.3s"><rect x="320" y="206" width="320" height="44" rx="9" fill="#66c4d014" stroke="${C.serpent}"/><rect x="338" y="222" width="14" height="14" rx="3" fill="${C.serpent}"/>${T(364,233,"Group 1 (low risk)",{s:14})}${T(620,233,"112",{a:'end',s:12,mono:true,fill:C.txt3})}</g><g class="fu" style="animation-delay:.7s"><rect x="320" y="258" width="320" height="44" rx="9" fill="${C.panel2}" stroke="${C.line}"/><rect x="338" y="274" width="14" height="14" rx="3" fill="${C.orange}"/>${T(364,285,"Group 2 (high risk)",{s:14})}${T(620,285,"103",{a:'end',s:12,mono:true,fill:C.txt3})}</g><g class="fu" style="animation-delay:1.1s"><rect x="320" y="312" width="320" height="40" rx="9" fill="none" stroke="${C.line}" stroke-dasharray="6 5"/>${T(480,338,"+  New dataset",{a:'middle',s:13,fill:C.txt})}</g></svg>`},
+  {n:"Manual",dur:8500,say:"To place points by hand, use Add. Switch to Adjust to drag a point, or Delete to remove one. A magnifier helps you click precisely, and arrow keys nudge a selected point.",ttl:"<span>Manual</span> extraction",cap:"<b>Add</b> places points · <b>Adjust</b> drags them · <b>Delete</b> removes them. A magnifier and arrow-key nudging keep you precise.",
+    svg:()=>`<svg viewBox="0 0 960 540">${["Add","Adjust","Delete"].map((l,i)=>chip(330+i*110,70,100,l,i===0,0.1+i*0.1)).join("")}${km(280,170,400,240)}${[0.05,0.15,0.28,0.4,0.55,0.7,0.82,0.92].map((t,i)=>dot(280+400*t,170+(t<0.28?20:t<0.55?108:t<0.8?173:216),C.serpent,1+i*0.12)).join("")}<circle cx="620" cy="360" r="46" fill="#100e22" stroke="${C.serpent}" stroke-width="2.5" class="fu" style="animation-delay:2s"/><line x1="574" y1="360" x2="666" y2="360" stroke="${C.serpent}" stroke-width="1" class="fu" style="animation-delay:2s"/><line x1="620" y1="314" x2="620" y2="406" stroke="${C.serpent}" stroke-width="1" class="fu" style="animation-delay:2s"/><g class="cur" style="animation:tgtap 3.5s 1s infinite"><g transform="translate(420,250)">${cur('')}</g></g><style>@keyframes tgtap{0%{transform:translate(60px,40px)}40%{transform:translate(0,0)}45%{transform:translate(0,0) scale(.85)}50%{transform:translate(0,0)}100%{transform:translate(0,0)}}</style></svg>`},
+  {n:"Mask",dur:8500,say:"For automatic extraction, first mask the curve. Use Pen to paint over just the line you want, Box for rectangles, Erase to trim, and View to toggle it. This keeps the other series, gridlines and legend out.",ttl:"Auto step 1 — <span>mask</span> the curve",cap:"Paint over <b>just one curve</b>: <b>Pen</b> brushes, <b>Box</b> rectangles, <b>Erase</b> trims, <b>View</b> toggles. Everything else is ignored.",
+    svg:()=>{const path=`M280 200 H470 V300 H640 V380 H760`;return `<svg viewBox="0 0 960 540">${["Box","Pen","Erase","View"].map((l,i)=>chip(330+i*84,70,76,l,i===1,0.1+i*0.08)).join("")}<path d="${path}" fill="none" stroke="${C.serpent}" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" opacity=".32" class="draw" style="animation-duration:3s"/><path d="${path}" fill="none" stroke="${C.orange}" stroke-width="5" stroke-linejoin="round"/><path d="M120 300 H250" stroke="${C.ube}" stroke-width="5" opacity=".5"/>${T(150,282,"other series",{s:11,fill:C.txt3})}<g class="cur" style="animation:tgpaint 3.4s 1.2s both"><g transform="translate(280,200)">${cur('')}</g></g><style>@keyframes tgpaint{0%{transform:translate(280px,200px)}25%{transform:translate(470px,200px)}45%{transform:translate(470px,300px)}70%{transform:translate(640px,300px)}85%{transform:translate(640px,380px)}100%{transform:translate(760px,380px)}}</style></svg>`;}},
+  {n:"Color",dur:7000,say:"Next, sample the curve's color with the eyedropper, and set Distance — how close a pixel's color must be to match. Press Filter colors to preview exactly which pixels will be picked up.",ttl:"Auto step 2 — <span>color</span> &amp; distance",cap:"Eyedrop the curve's <b>color</b>, set <b>Distance</b> (match tolerance), then <b>Filter colors</b> to preview matched pixels.",
+    svg:()=>`<svg viewBox="0 0 960 540">${P(300,120,360,300,14)}${T(326,156,"COLOR",{s:12,mono:true,fill:C.txt3})}<rect x="320" y="172" width="44" height="44" rx="9" fill="${C.orange}" class="pop"/><g class="fu" style="animation-delay:.3s"><rect x="376" y="172" width="262" height="44" rx="9" fill="${C.panel2}" stroke="${C.line}"/>${T(507,200,"Foreground color",{a:'middle',s:14})}</g>${T(326,256,"Distance (tolerance)",{s:12,fill:C.txt})}${T(638,256,"30",{a:'end',mono:true,s:12,fill:C.serpent})}<rect x="320" y="268" width="318" height="6" rx="3" fill="#ffffff22"/><circle cx="390" cy="271" r="9" fill="${C.serpent}"/><g class="fu" style="animation-delay:.6s"><rect x="320" y="300" width="200" height="40" rx="9" fill="${C.panel2}" stroke="${C.line}"/>${T(420,326,"Filter colors",{a:'middle',s:13})}</g><g class="fu" style="animation-delay:1.4s">${[0,1,2,3,4,5].map(i=>`<circle cx="${360+i*44}" cy="382" r="6" fill="${C.orange}"/>`).join("")}${T(326,362,"matched pixels preview",{s:11,fill:C.txt3})}</g></svg>`},
+  {n:"Algorithm",dur:9500,say:"Choose an algorithm. Averaging Window traces lines and step curves; Delta X and Delta Y set the spacing. Scan direction matters: X sweeps columns for horizontal runs, Y sweeps rows for vertical risers, and Both covers a full step curve. Then press Run.",ttl:"Auto step 3 — <span>algorithm</span> &amp; scan",cap:"<b>Averaging Window</b> with <b>ΔX/ΔY</b> spacing. <b>Scan X</b> = columns, <b>Scan Y</b> = rows, <b>Both</b> traces the whole step curve. Then <b>Run</b>.",
+    svg:()=>{const sc=(ox,label,pts,d)=>`<g class="fu" style="animation-delay:${d}s">${P(ox,150,210,230,12,"#100e22")}${T(ox+105,180,label,{a:'middle',s:13,fill:C.serpent})}<path d="M${ox+20} 210 H${ox+95} V300 H${ox+170} V350" fill="none" stroke="${C.orange}" stroke-width="4"/>${pts.map(p=>`<circle cx="${ox+p[0]}" cy="${p[1]}" r="4" fill="${C.serpent}"/>`).join("")}</g>`;
+      const horiz=[];for(let i=0;i<8;i++)horiz.push([20+i*9.4,210]);for(let i=0;i<8;i++)horiz.push([95+i*9.4,300]);
+      const vert=[[95,210],[95,240],[95,270],[95,300],[170,300],[170,330],[170,350]];
+      return `<svg viewBox="0 0 960 540">${sc(60,"Scan X →",horiz,.4)}${sc(375,"Scan Y ↓",vert,.9)}${sc(690,"Both",horiz.concat(vert),1.4)}<g class="fu" style="animation-delay:1.9s"><rect x="375" y="430" width="210" height="40" rx="9" fill="${C.serpent}"/>${T(480,456,"Run — Extract Curve",{a:'middle',s:13,fill:'#0c0b18',w:700})}</g></svg>`;}},
+  {n:"Accuracy",dur:8000,say:"Auto-extraction gets you most of the way. For the last touch, lower Distance to avoid fuzzy edges, keep the mask snug, then clean up with Adjust, Add and Delete. The corners of step curves usually want a manual point.",ttl:"Getting it <span>accurate</span>",cap:"Auto gets ~95%. Lower <b>Distance</b>, keep the mask snug, smaller <b>ΔX/ΔY</b>, then finish corners with <b>Adjust / Add / Delete</b>.",
+    svg:()=>`<svg viewBox="0 0 960 540">${P(60,140,380,260,14,"#100e22")}${T(250,175,"before — strays & gaps",{a:'middle',s:13,fill:C.orange})}<path d="M90 210 H230 V300 H370" fill="none" stroke="${C.orange}" stroke-width="4" opacity=".7"/>${[[100,210],[140,205],[180,214],[210,250],[230,300],[270,295],[330,302],[225,260]].map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="4.5" fill="${C.serpent}"/>`).join("")}${P(520,140,380,260,14,"#100e22")}${T(710,175,"after — cleaned up",{a:'middle',s:13,fill:C.green})}<path d="M550 210 H690 V300 H830" fill="none" stroke="${C.orange}" stroke-width="4" opacity=".7"/>${[0,0.25,0.5,0.75,1].map((t,i)=>`<circle cx="${550+140*t}" cy="210" r="4.5" fill="${C.serpent}" class="pop" style="animation-delay:${0.5+i*0.1}s"/>`).join("")}${[230,260,290].map((y,i)=>`<circle cx="690" cy="${y}" r="4.5" fill="${C.serpent}" class="pop" style="animation-delay:${1.1+i*0.1}s"/>`).join("")}${[0.25,0.5,0.75,1].map((t,i)=>`<circle cx="${690+140*t}" cy="300" r="4.5" fill="${C.serpent}" class="pop" style="animation-delay:${1.5+i*0.1}s"/>`).join("")}</svg>`},
+  {n:"Preview",dur:7000,say:"Check your work in the Live Preview — Scatter, Line, or a Kaplan-Meier step view — and download the chart as a PNG to validate or share.",ttl:"<span>Live preview</span> &amp; download",cap:"Validate as <b>Scatter</b>, <b>Line</b>, or <b>Step (KM)</b> — and download the chart as a <b>PNG</b>.",
+    svg:()=>`<svg viewBox="0 0 960 540">${["Scatter","Line","Step (KM)"].map((l,i)=>chip(330+i*108,90,98,l,i===2,0.1+i*0.1)).join("")}${P(300,150,360,260,14,"#100e22")}<path d="M330 200 H430 V250 H520 V300 H600 V350 H640" fill="none" stroke="${C.serpent}" stroke-width="4" class="draw" style="animation-delay:.4s"/>${[[330,200],[430,200],[430,250],[520,250],[520,300],[600,300],[600,350],[640,350]].map((p,i)=>`<circle cx="${p[0]}" cy="${p[1]}" r="4.5" fill="${C.serpent}" class="pop" style="animation-delay:${1+i*0.08}s"/>`).join("")}<g class="fu" style="animation-delay:1.8s"><rect x="560" y="160" width="84" height="30" rx="7" fill="${C.serpent}"/>${T(602,180,"⬇ PNG",{a:'middle',s:12,fill:'#0c0b18',w:700})}</g></svg>`},
+  {n:"Export",dur:6500,say:"When you're happy, export your data as CSV, TSV or JSON, or copy it straight to the clipboard. You can also save the whole project to continue later.",ttl:"<span>Export</span> &amp; save",cap:"Export <b>CSV · TSV · JSON</b> or copy to clipboard. <b>Save Project</b> keeps the image, calibration, datasets &amp; settings.",
+    svg:()=>`<svg viewBox="0 0 960 540">${[["CSV",".csv",C.serpent],["JSON",".json",C.gold],["TSV",".tsv",C.green]].map((d,i)=>`<g class="fu" style="animation-delay:${0.2+i*0.15}s">${P(220+i*180,180,150,120,12,C.panel)}${T(295+i*180,235,d[0],{a:'middle',s:22,w:800})}${T(295+i*180,265,d[1],{a:'middle',s:13,mono:true,fill:d[2]})}</g>`).join("")}<g class="fu" style="animation-delay:.8s"><rect x="350" y="340" width="260" height="44" rx="10" fill="${C.panel2}" stroke="${C.line}"/>${T(480,368,"Save Project (.json)",{a:'middle',s:14})}</g></svg>`},
+  {n:"Recap",dur:6500,say:"That's Plotline. Calibrate, mask, extract, refine, and export. Now go turn those graphs into data.",ttl:"You're <span>ready</span>",cap:"Calibrate → Mask → Extract → Refine → Export. Happy digitizing!",
+    svg:()=>`<svg viewBox="0 0 960 540">${["Calibrate","Mask","Extract","Refine","Export"].map((l,i)=>`<g class="pop" style="animation-delay:${0.2+i*0.18}s"><rect x="${130+i*140}" y="240" width="120" height="60" rx="12" fill="${i%2?C.panel2:'#231f47'}" stroke="${C.serpent}"/>${T(190+i*140,276,l,{a:'middle',s:14,w:700,fill:C.serpent})}</g>`).join("")}${T(480,180,"Turn graphs into data.",{a:'middle',s:26,w:800,cls:'fu'})}</svg>`}
+  ];
+
+  const scene=$("#tg-scene"), caption=$("#tg-caption"), bar=$("#tg-bar"), chapnum=$("#tg-chapnum"), tnum=$("#tg-tnum");
+  let cur2=0, playing=false, timer=null, sceneStart=0, remaining=0;
+  const synth=window.speechSynthesis;
+  function buildRail(){ const rail=$("#tg-chaprail");
+    rail.innerHTML=CH.map((c,i)=>`<button class="tg-chap" data-i="${i}"><span class="n">${String(i+1).padStart(2,'0')}</span><span class="lbl">${c.n}</span></button>`).join("");
+    rail.querySelectorAll(".tg-chap").forEach(b=>b.onclick=()=>jump(+b.dataset.i)); }
+  function markRail(){ document.querySelectorAll(".tg-chap").forEach((b,i)=>b.classList.toggle("on",i===cur2)); }
+  function speak(t){ if(!synth)return; synth.cancel(); if(!$("#tg-voice").checked)return; const u=new SpeechSynthesisUtterance(t.replace(/<[^>]+>/g,"")); u.rate=1; u.lang="en-US"; synth.speak(u); }
+  function mount(i,auto){ cur2=Math.max(0,Math.min(CH.length-1,i)); const c=CH[cur2];
+    scene.innerHTML=c.svg(); caption.innerHTML=`<div class="ttl">${c.ttl}</div>${c.cap}`;
+    chapnum.textContent=tnum.textContent=`${String(cur2+1).padStart(2,'0')} / ${CH.length}`; markRail();
+    bar.classList.remove("run"); void bar.offsetWidth; bar.style.animationDuration=c.dur+"ms"; remaining=c.dur;
+    if(playing) runScene(); else bar.style.width="0";
+    if(auto!==false) speak(c.say); }
+  function runScene(){ bar.classList.add("run"); bar.style.animationPlayState="running"; sceneStart=Date.now();
+    clearTimeout(timer); timer=setTimeout(()=>{ if(cur2<CH.length-1) mount(cur2+1); else stopEnd(); }, remaining); }
+  function play(){ if(playing)return; playing=true; $("#tg-poster").classList.add("hide");
+    $("#tg-playIcon").innerHTML='<path d="M8 5h4v14H8zM14 5h4v14h-4z"/>';
+    if(cur2===CH.length-1&&remaining<=0) mount(0); else { speak(CH[cur2].say); runScene(); } }
+  function pause(){ playing=false; $("#tg-playIcon").innerHTML='<path d="M8 5v14l11-7z"/>'; clearTimeout(timer);
+    remaining-=(Date.now()-sceneStart); bar.style.animationPlayState="paused"; if(synth)synth.cancel(); }
+  function stopEnd(){ playing=false; $("#tg-playIcon").innerHTML='<path d="M8 5v14l11-7z"/>'; remaining=0; if(synth)synth.cancel(); }
+  function toggle(){ playing?pause():play(); }
+  function jump(i){ const w=playing; clearTimeout(timer); if(synth)synth.cancel(); playing=w; mount(i,w); if(!w) bar.style.width="0"; }
+  function openTut(){ $("#tg-modal").classList.add("open"); playing=false; $("#tg-poster").classList.remove("hide");
+    $("#tg-playIcon").innerHTML='<path d="M8 5v14l11-7z"/>'; mount(0,false); bar.style.width="0"; }
+  function closeTut(){ pause(); $("#tg-modal").classList.remove("open"); }
+
+  $("#tg-play").onclick=toggle;
+  $("#tg-playBig").onclick=()=>{ cur2=0; mount(0,false); play(); };
+  $("#tg-next").onclick=()=>jump(Math.min(CH.length-1,cur2+1));
+  $("#tg-prev").onclick=()=>jump(Math.max(0,cur2-1));
+  $("#tg-restart").onclick=()=>{ $("#tg-poster").classList.add("hide"); playing=true; $("#tg-playIcon").innerHTML='<path d="M8 5h4v14H8zM14 5h4v14h-4z"/>'; mount(0,true); };
+  $("#tg-progress").onclick=e=>{ const r=$("#tg-progress").getBoundingClientRect(); jump(Math.floor((e.clientX-r.left)/r.width*CH.length)); };
+  $("#tg-voice").onchange=()=>{ if(!$("#tg-voice").checked&&synth)synth.cancel(); else if(playing)speak(CH[cur2].say); };
+  $("#tg-close").onclick=closeTut;
+  $("#tg-modal").addEventListener("click",e=>{ if(e.target.id==="tg-modal") closeTut(); });
+  window.addEventListener("keydown",e=>{ if(!$("#tg-modal").classList.contains("open"))return;
+    if(e.key==="Escape") closeTut(); else if(e.code==="Space"){e.preventDefault();toggle();}
+    else if(e.key==="ArrowRight")jump(Math.min(CH.length-1,cur2+1)); else if(e.key==="ArrowLeft")jump(Math.max(0,cur2-1)); });
+  const gb=$("#guideBtn"); if(gb) gb.onclick=openTut;
+  document.querySelectorAll(".tg-logo").forEach(i=>i.src=LOGO);
+  buildRail();
+})();
+
 </script>
 </body>
 </html>
